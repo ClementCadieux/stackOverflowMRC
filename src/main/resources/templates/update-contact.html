@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+<body>
+    <div th:object="${contact}">
+        <form th:action="'/add-new-contact-info/' + ${contact.id}" method="post" th:object="${newContactInfo}"> 
+            <label for="infoType">Type</label>
+            <select name="infoType" th:field="*{infoType}">
+                <option th:each="type: ${infoTypes}" th:value="${type}" th:text="${type.infoTypeString}"></option>
+            </select>
+            <label for="infoValue"></label>
+            <input type="text" name="infoValue" th:field="*{infoValue}">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
